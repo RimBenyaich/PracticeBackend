@@ -21,3 +21,4 @@ def getLanguagesInfo(repos_list: list):
             languages_infos[repo["language"]]["list"].append(repo["url"])
     
     return languages_infos
+    
