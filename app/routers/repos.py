@@ -9,5 +9,5 @@ router = APIRouter()
 logger = logging.getLogger(__name__)
 
 @router.get("/repos")
-async def getRepos(date: Optional[datetime] = datetime.now()):
-    return await repos_services.getRepos(date)
+async def getLanguagesInformation(date: Optional[datetime] = datetime.now()):
+    return await repos_services.getLanguagesInformation(date)

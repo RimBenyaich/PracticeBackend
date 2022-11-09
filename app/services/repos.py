@@ -1,9 +1,18 @@
 from datetime import datetime
 import requests
+from ..utils import functions
 
-async def getRepos(date: datetime):
+async def getLanguagesInformation(date: datetime):
     query = "https://api.github.com/search/repositories?q=created:<"+ date.isoformat()+"Z&sort=stars&order=desc"
 
-    r = requests.get(query)
+    json_repos = requests.get(query)
+    repos_dict = json_repos.json()
+    arr = []
 
-    return r.json()
+    for key, value in repos_dict.items():
+        if key == "items":
+            arr = value
+
+    occurences = functions.getLanguagesInfo(arr)
+
+    return occurences
